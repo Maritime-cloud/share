@@ -10,17 +10,57 @@
 	</body>
 	<script src="dist/soshm.min.js"></script>
 	<script type="text/javascript">
-		soshm('#share', {
-    // 分享的链接，默认使用location.href
-    // 分享的标题，默认使用document.title
-    title: '',
-    // 分享的摘要，默认使用<meta name="description" content="">content的值
-    digest: '',
-    // 分享的图片，默认获取本页面第一个img元素的src
-    pic: '',
-    // 默认显示的网站为以下六个个,支持设置的网站有
-    // weixin,weixintimeline,qq,qzone,yixin,weibo,tqq,renren,douban,tieba
-    sites: ['weixin', 'weixintimeline', 'yixin', 'weibo', 'qq', 'qzone']
-  });
+		  goDownload();
+
+        // 去下载
+        function goDownload() {
+            var u = navigator.userAgent, app = navigator.appVersion;
+            var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1;
+            var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
+            // 这里是安卓浏览器
+            if (isAndroid) {
+                window.location.href = 'https://m.rongrong.cn/'; // 跳安卓端下载地址
+            }
+            // 这里是iOS浏览器
+            if (isIOS) {
+                window.location.href = 'https://www.baidu.com/'; // 跳AppStore下载地址
+            }
+
+            // 是微信内部webView
+            if (is_weixn()) {
+                alert("请点击右上角按钮, 点击使用浏览器打开");
+            }
+
+            // 是PC端
+            if (IsPC()) {
+                window.location.href = 'http://www.xxxxxxx.cn/index.html';  // 公司主页
+            }
+        }
+
+        // 是微信浏览器
+        function is_weixn(){
+            var ua = navigator.userAgent.toLowerCase();
+            if(ua.match(/MicroMessenger/i)=="micromessenger") {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+
+        function IsPC() {
+            var userAgentInfo = navigator.userAgent;
+            var Agents = ["Android", "iPhone",
+                "SymbianOS", "Windows Phone",
+                "iPad", "iPod"];
+            var flag = true;
+            for (var v = 0; v < Agents.length; v++) {
+                if (userAgentInfo.indexOf(Agents[v]) > 0) {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 	</script>
 </html>
