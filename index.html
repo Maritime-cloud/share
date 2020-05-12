@@ -19,11 +19,13 @@
             var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
             // 这里是安卓浏览器
             if (isAndroid) {
-                window.location.href = 'https://m.rongrong.cn/'; // 跳安卓端下载地址
+		    alert("android");
+                window.location.href = 'http://image2.rongrong.cn/app/rong.apk'; // 跳安卓端下载地址
             }
             // 这里是iOS浏览器
             if (isIOS) {
-                window.location.href = 'https://www.baidu.com/'; // 跳AppStore下载地址
+	        alert("ios");
+                window.location.href = "'itms-apps://itunes.apple.com/cn/app/id1476668933?mt=8','_self'"; // 跳AppStore下载地址
             }
 
             // 是微信内部webView
@@ -33,7 +35,7 @@
 
             // 是PC端
             if (IsPC()) {
-                window.location.href = 'http://www.xxxxxxx.cn/index.html';  // 公司主页
+                //window.location.href = 'http://www.xxxxxxx.cn/index.html';  // 公司主页
             }
         }
 
